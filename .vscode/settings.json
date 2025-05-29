@@ -1,0 +1,21 @@
+{
+    "chat.agent.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "chat.focusWindowOnConfirmation": false,
+    "telemetry.feedback.enabled": false,
+    "css.completion.triggerPropertyValueCompletion": false,
+    "less.completion.completePropertyWithSemicolon": false,
+    "css.completion.completePropertyWithSemicolon": false,
+    "less.completion.triggerPropertyValueCompletion": false,
+    "scss.completion.completePropertyWithSemicolon": false,
+    "scss.completion.triggerPropertyValueCompletion": false,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "typescript.format.insertSpaceAfterSemicolonInForStatements": false
+}
