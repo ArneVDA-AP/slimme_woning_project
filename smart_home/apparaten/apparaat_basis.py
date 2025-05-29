@@ -51,5 +51,5 @@ class Apparaat(ABC):
                 # het nog geen .naam attribuut, of een 'typeerror'
                 kamer_info = "Kamer naam onbekend. Bestaat .naam attribuut?"
         
-        return f"Apparaat: {self.naam} (Kaner: {kamer_info}) - Status: {status_tekst}"
+        return f"Apparaat: {self.naam} (Kamer: {kamer_info}) - Status: {status_tekst}"
 

@@ -46,4 +46,10 @@ class Lamp(Apparaat):
     def get_status_details(self) -> str:
         return f"Helderheid: {self.helderheid}%"
     
+    def zet_aan(self):
+        super().zet_aan()
+
+        # lamp aangezet met 0 helderheid? Automatisch naar 100.
+        if self.helderheid == 0 and self.status:
+            self.pas_helderheid_aan(100)
     
