@@ -45,10 +45,10 @@ class Woning:
         if not self.kamers:
             kamers_info += "Geen kamers in de woning\n"
         else:
-            for kamer_naam in self.kamers:
+            for kamer_naam in self.kamers.keys():
                 kamers_info += f" {kamer_naam}\n"
 
-        bewoner_info = "Bewoner: "
+        bewoner_info = "Bewoners:\n "
         if not self.bewoners:
             bewoner_info += "Geen bewoners in de woning"
         else:
