@@ -1,4 +1,4 @@
-from apparaten.lamp import Lamp;
+from ..apparaten.lamp import Lamp;
 
 class SmartHub:
     def __init__(self, logger_instance, naam:str = "Default Smarthub"):
