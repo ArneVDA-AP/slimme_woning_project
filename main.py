@@ -164,6 +164,88 @@ def simuleer_tijdstap(woning_obj, logger_obj, hub_obj):
                 app.reset_sensor()
 
 
+def toon_hoofd_menu():
+    print("1. Start auto simulatie (x tijdstappen)")
+    print("2. Genereer/update html statusoverzicht")
+    print("3. Voer handmatig actie uit op apparaat")
+    print("4. Toon laatste paar logs")
+    print("0. Exit")
+
+def vraag_gebruikers_keuze():
+    while True:
+        try:
+            keuze = int(input("Kies een optie: "))
+            return keuze
+        except ValueError:
+            print("Ongeldige input, voer een cijfer in! 1-4")
+        
+def voer_handmatige_actie_uit(woning_obj,logger_obj):
+    if not woning_obj or not logger_obj:
+        print("Fout geen woning of logger, dit is nodig voro handmatige actie")
+        return
+    alle_apparaten = woning_obj.get_alle_apparaten()
+    if not alle_apparaten:
+        print("geen apparaten beschikbaar voor handm actie")
+        return
+    
+    print("Apparaten:")
+    for i, app in enumerate(alle_apparaten):
+        print(f"{i+1}. {app.naam} in {app.kamer.naam if app.kamer else "geen kamer"}"
+              f"Status: {"aan" if app.status else "UIT"}")
+        
+    while True:
+        try:
+            app_keuze_index = int(input(f"Kies apparaaat met nr of 0 om te exiten."))
+            if app_keuze_index ==0:
+                return
+            if 1<= app_keuze_index <= len(alle_apparaten):
+                gekozen_apparaat = alle_apparaten[app_keuze_index-1]
+                break
+            else:
+                print("Geen geldig appnummer...")
+        except ValueError:
+            print("Voer geldig cijfer in")
+
+    print(f"gekozen apparaat: {gekozen_apparaat.naam}")
+    print("Mogelijke acties:'aan', 'uit', 'toggle'")
+    #enkel voor algemene app, specifieke nog toevooegen vr lamp thermo etc.
+
+    actie = input("Welke actie uitvoeren?").strip().lower()
+
+    log_msg = f"Handmatige actie voor: {gekozen_apparaat.naam}: {actie}"
+
+    if actie=="aan":
+        gekozen_apparaat.zet_aan()
+    elif actie=="uit":
+        gekozen_apparaat.zet_uit()
+    elif actie=="toggle":
+        gekozen_apparaat.toggle_status()
+
+    elif isinstance(gekozen_apparaat, Lamp) and actie == "helderheid":
+        try:
+            niveau = int(input("Helderheid: 0-100: "))
+            gekozen_apparaat.pas_helderheid_aan(niveau)
+        except ValueError:
+            logger_obj.log("Helderheid ongeldig, mt tussen 0-100 zijn")
+    else:
+        logger_obj.log(f"Onbekende handmatige actie {actie} voor {gekozen_apparaat}.")
+        return
+
+    print(f"{actie} uitgevoerd op {gekozen_apparaat.naam} Satus: {gekozen_apparaat.get_status_details()}")
+
+
+def toon_laatste_logs(logger_obj, aantal = 7):
+    if not logger_obj:
+        print("Geen logger initialised")
+        return
+    print(f"Laatste {aantal} logs:")
+    logs = logger_obj.get_logs()
+    if not logs:
+        print("Geen logs beschikbaar?")
+        return
+    for entry in logs[-aantal:]:
+        print(entry)
+    
 
 if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehctstreeks kan uitvoeren
                             #en dus niet als ik het geimporteerd heb.
@@ -176,25 +258,59 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
 
     html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
 
-    aantal_tijdstappen = 10
-    seconden_per_stap = 2
+    # aantal_tijdstappen = 5
+    # seconden_per_stap = 1
 
-    mijn_logger.log(f"Start sim met {aantal_tijdstappen} tijdstappen per stap {seconden_per_stap} seconden wachten.")
-
-    for i in range(aantal_tijdstappen):
-        mijn_logger.log(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
-
-
-        simuleer_tijdstap(mijn_woning, mijn_logger, mijn_hub) 
+    while True:
+        toon_hoofd_menu()
+        gebruikers_input = vraag_gebruikers_keuze()
         
-        # update de html na elke 2 stappen, anders moielijk om realtime sim te volgen als traag stappen vergroten
-        if (i+1) % 2 ==0 or (i + 1) == aantal_tijdstappen:
-            html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
-        time.sleep(seconden_per_stap)
+        if gebruikers_input == 1:
+            try:
+                aantal_tijdstappen = int(input("Hvl tijdstappen wil je simuleren?"))
+                seconden_per_stap = float(input("Hoeveel seconden vertraging per stap? bv 0.5, 1 of 2"))
+            except Exception:
+                print("Geldig cijfer invoeren aub")  
+                continue
+            mijn_logger.log(f"Start sim met {aantal_tijdstappen} tijdstappen per stap {seconden_per_stap} seconden wachten.")
 
-    mijn_logger.log("\nEinde sim")
-    mijn_logger.log(mijn_woning)
+            for i in range(aantal_tijdstappen):
+                mijn_logger.log(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
+
+
+                simuleer_tijdstap(mijn_woning, mijn_logger, mijn_hub) 
+                
+                # update de html na elke 2 stappen, anders moielijk om realtime sim te volgen als traag stappen vergroten
+                if (i+1) % 2 ==0 or (i + 1) == aantal_tijdstappen:
+                    html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
+                time.sleep(seconden_per_stap)
+
+            mijn_logger.log("\nEinde sim")
+            mijn_logger.log(mijn_woning)
+        elif gebruikers_input == 2:
+            mijn_logger.log("HTML statusoverzicht gevraagd")
+            html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)            
+            mijn_logger.log("site updated.")
+        elif gebruikers_input == 3:
+            voer_handmatige_actie_uit(mijn_woning, mijn_logger)
+
+        elif gebruikers_input == 4:
+            try:
+                aantal = int(input("Hvl recente log entries wilt je zien?"))
+                if not aantal:
+                    aantal = 10
+                toon_laatste_logs(mijn_logger,aantal)
+            except ValueError:
+                mijn_logger.log("Geef geldig cijfer i vr aantal logs")
+                toon_laatste_logs(mijn_logger) #default v 7 gebruiken
+        elif gebruikers_input == 0:
+            break
+        else:
+            mijn_logger.log("Ongeldige menukeuze!!")
+
 
     mijn_logger.close()
 
     mijn_logger.log(f"HTMLGEN klaar Kijk in {html_gen.output_map} voor index.html")
+    print("Einde programma.")
+
