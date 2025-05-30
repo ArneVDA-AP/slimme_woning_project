@@ -115,7 +115,7 @@ def setup_woning():
 
     logger.log("Apparaten en bewoners toegevoegd en bewoners verplaatst met logger attached", "SETUP")
 
-    mijn_logger.log("Setup woning voltooid.")
+    logger.log("Setup woning voltooid.")
 
     return woning, logger, hub
 
@@ -172,7 +172,7 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
     mijn_logger.log("\n Woning realtime")
     mijn_logger.log(mijn_woning)
 
-    html_gen = HTMLGenerator()
+    html_gen = HTMLGenerator(logger_instance=mijn_logger)
 
     html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
 

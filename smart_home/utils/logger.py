@@ -47,9 +47,9 @@ class Logger:
     def close(self):
         if self.file_geopend:
             try:
-                print("Logger sluiten", type_event="SYSTEEM")
+                self.log("Logger sluiten", type_event="SYSTEEM")
                 self.file_geopend.close()
                 self.file_geopend = None
             except Exception as e:
-                self.logger.log(f"Fout bij het sluiten logbestand. fout: {e}")
+                print(f"Fout bij het sluiten logbestand. fout: {e}")
     

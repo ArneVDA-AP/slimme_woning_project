@@ -1,8 +1,10 @@
 import os
 
 class HTMLGenerator:
-    def __init__(self, output_map: str = "_site/"):
+    def __init__(self, output_map: str = "_site/", logger_instance = None):
         self.output_map:str = output_map
+
+        self.logger = logger_instance 
         try:
             os.makedirs(self.output_map, exist_ok=True)
             self.logger.log(f"INFO; output map is aangemaakt of bestond al {self.output_map}")
