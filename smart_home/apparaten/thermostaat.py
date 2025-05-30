@@ -6,8 +6,8 @@ class Thermostaat(Apparaat):
     MIN_TEMP = 10.0
     MAX_TEMP = 30.0
 
-    def __init__(self, naam, kamer=None, ingestelde_temp: float = 20.0):
-        super().__init__(naam, kamer)
+    def __init__(self, naam, kamer=None, ingestelde_temp: float = 20.0, logger_instance=None):
+        super().__init__(naam, kamer, logger_instance=logger_instance)
         self._ingestelde_temp: float = self.MIN_TEMP
         self.stel_temp_in(ingestelde_temp)
 

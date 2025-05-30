@@ -1,13 +1,13 @@
 from .apparaat_basis import Apparaat;
 
 class Lamp(Apparaat):
-    def __init__(self, naam:str, kamer=None, helderheid: int = 100):
-        super().__init__(naam, kamer)
+    def __init__(self, naam:str, kamer=None, helderheid: int = 100, logger_instance=None):
+        super().__init__(naam, kamer,logger_instance=logger_instance)
 
         # self.helderheid:int = self._valideer_helderheid(helderheid)
         self._helderheid:int = 100
         self.pas_helderheid_aan(helderheid)
-
+        
         # Ik ga er van uit dat als we een helderheid instellen
         # dat we ook willen dat de lamp automatisch gaat branden.
         # de lamp is standaard uit, status wordt standaard op False

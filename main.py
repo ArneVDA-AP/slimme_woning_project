@@ -23,7 +23,7 @@ def setup_woning():
     # smarthub
     hub = SmartHub(logger, "Smarthub 1")
     # woning naam geven en koppelen met hub
-    woning = Woning(naam="Slimme woning", smarthub_object=hub)
+    woning = Woning(naam="Slimme woning", smarthub_object=hub, logger_instance=logger)
 
     logger.log(f"Woning {woning.naam} succesvol aangemaaktt en smarthub {hub.naam} gekoppeld","SETUP")
 
@@ -157,6 +157,11 @@ def simuleer_tijdstap(woning_obj, logger_obj, hub_obj):
                         logger_obj.log(f"Bewegingssensor {apparaat.naam} in{nieuwe_kamer.naam} staat uit","SENSOR")
         elif nieuwe_kamer == oude_kamer:
             logger_obj.log(f"{bewoner.naam} blijft in {oude_kamer.naam if oude_kamer else "geen kamer"}", "SIM")
+    logger_obj.log("Reset beweginssensoren")
+    for kamer in woning_obj.kamers.values():
+        for app in kamer.get_apparaten():
+            if isinstance(app, Bewegingssensor):
+                app.reset_sensor()
 
 
 

@@ -1,9 +1,10 @@
 class Woning:
-    def __init__(self, naam:str, smarthub_object):
+    def __init__(self, naam:str, smarthub_object, logger_instance=None):
         self.naam:str = naam
         self.kamers: dict = {}
         self.bewoners: list = []
         self.smarthub = smarthub_object
+        self.logger = logger_instance
 
 
         if self.smarthub:

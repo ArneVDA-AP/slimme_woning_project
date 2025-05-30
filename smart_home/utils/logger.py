@@ -8,9 +8,9 @@ class Logger:
         if self.log_file_path:
             try:
                 self.file_geopend = open(self.log_file_path, "a+", encoding="utf-8")
-                self.logger.log(f"INFO: Logbestand: {self.log_file_path}")
+                print(f"INFO: Logbestand: {self.log_file_path}")
             except Exception as e:
-                self.logger.log(f"FOUT: kon log {self.log_file_path} niet openen/aanmaken. fout: {e}")
+                print(f"FOUT: kon log {self.log_file_path} niet openen/aanmaken. fout: {e}")
 
                 self.file_geopend = None
                 self.log_file_path = None
@@ -24,7 +24,7 @@ class Logger:
         log_entry_str = f"{timestamp} - {type_event} - {msg}"
 
         self.log_entries.append(log_entry_str)
-        self.logger.log(log_entry_str)
+        print(log_entry_str)
 
         if self.file_geopend:
             try:
@@ -32,7 +32,7 @@ class Logger:
                 self.file_geopend.flush() # direct schrijvene
 
             except Exception as e:
-                self.logger.log(f"FOUT: Kon niet naar logbestand {self.log_file_path} schrijven, fout: e")
+                print(f"FOUT: Kon niet naar logbestand {self.log_file_path} schrijven, fout: e")
 
     def get_logs(self) -> list[str]:
         return self.log_entries
@@ -40,14 +40,14 @@ class Logger:
     def clear_logs(self):
         if self.log_entries != []:
             self.log_entries = []
-            self.logger.log(f"INFO: logs gewist, staan nog wel in logbestand {self.log_file_path}")
+            print(f"INFO: logs gewist, staan nog wel in logbestand {self.log_file_path}")
         else:
-            self.logger.log("intern loggeheugen was al of nog leeg. niets om te wissen")
+            print("intern loggeheugen was al of nog leeg. niets om te wissen")
 
     def close(self):
         if self.file_geopend:
             try:
-                self.log("Logger sluiten", type_event="SYSTEEM")
+                print("Logger sluiten", type_event="SYSTEEM")
                 self.file_geopend.close()
                 self.file_geopend = None
             except Exception as e:

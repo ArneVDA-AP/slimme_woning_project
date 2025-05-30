@@ -4,8 +4,8 @@ from .apparaat_basis import Apparaat;
 class Gordijn(Apparaat):
     MOGELIJKE_POSITIES = ["open", "gesloten", "half open"]
 
-    def __init__(self, naam:str, kamer=None, begin_positie:str = "gesloten"):
-        super().__init__(naam, kamer)
+    def __init__(self, naam:str, kamer=None, begin_positie:str = "gesloten", logger_instance=None):
+        super().__init__(naam, kamer, logger_instance=logger_instance)
 
         if begin_positie not in self.MOGELIJKE_POSITIES:
             self.logger.log(f"WAARSCHUWINF: Ongeldige beginpositie {begin_positie} voor {self.naam}"

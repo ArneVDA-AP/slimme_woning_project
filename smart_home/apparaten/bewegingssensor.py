@@ -1,8 +1,8 @@
 from .apparaat_basis import Apparaat;
 
 class Bewegingssensor (Apparaat):
-    def __init__(self, naam:str, kamer=None, smarthub_ref=None):
-        super().__init__(naam, kamer)
+    def __init__(self, naam:str, kamer=None, smarthub_ref=None, logger_instance=None):
+        super().__init__(naam, kamer, logger_instance=logger_instance)
         self._beweging_gedetecteerd: bool = False
         self.smarthub = smarthub_ref
 

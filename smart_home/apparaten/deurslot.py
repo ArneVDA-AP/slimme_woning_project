@@ -1,9 +1,9 @@
 from .apparaat_basis import Apparaat;
 
 class Deurslot(Apparaat):
-    def __init__(self, naam:str, kamer=None):
-        super().__init__(naam, kamer)
-
+    def __init__(self, naam:str, kamer=None, logger_instance=None):
+        super().__init__(naam, kamer, logger_instance=logger_instance)
+        
     def vergrendel(self):
         if not self.status:
             super().zet_aan() # aan = true dus in dit geval VERgrendel
