@@ -179,8 +179,8 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
     for i in range(aantal_tijdstappen):
         print(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
 
-        # update de html na elke stap, anders moielijk om realtime sim te volgen als traag stappen vergroten
-        if (i + 1) == aantal_tijdstappen:
+        # update de html na elke 2 stappen, anders moielijk om realtime sim te volgen als traag stappen vergroten
+        if (i+1) % 2 ==0 or (i + 1) == aantal_tijdstappen:
             html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
         time.sleep(seconden_per_stap)
 
