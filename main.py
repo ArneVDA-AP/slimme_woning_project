@@ -119,6 +119,11 @@ def setup_woning():
 
     return woning, logger, hub
 
+
+def simuleer_tijdstap(woning_obj, logger_obj, hub_obj):
+    pass
+
+
 if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehctstreeks kan uitvoeren
                             #en dus niet als ik het geimporteerd heb.
     mijn_woning, mijn_logger, mijn_hub = setup_woning() # zelfde vorlgorde als de returns
@@ -133,3 +138,5 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
     mijn_logger.close()
 
     print(f"normaal gezien zou de html moeten gegenerate zijn... check {html_gen.output_map} voor index.html")
+
+

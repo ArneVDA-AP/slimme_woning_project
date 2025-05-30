@@ -7,10 +7,13 @@ class Bewoner:
     def verplaats(self, nieuwe_kamer_obj, logger_instance=None):
         oude_kamer_naam = " "
         if self.huidige_kamer:
-            oude_kamer_naam = self.huidige_kamer.naam
+            oude_kamer_naam = getattr(self.huidige_kamer,"naam","onbekende oude kamer")
 
-            self.huidige_kamer = nieuwe_kamer_obj
+        self.huidige_kamer = nieuwe_kamer_obj
 
+        nieuwe_kamer_naam = "None"
+        if self.huidige_kamer:
+            nieuwe_kamer_naam = getattr(self.huidige_kamer, "naam", "Onbekende nieuwe kamer")
             print(f"DEBUG: verplaats: {self.naam} huidige kamer is nu:"
                   f"{self.huidige_kamer.naam if self.huidige_kamer.naam else 'None'}")
 
@@ -19,7 +22,7 @@ class Bewoner:
             log_msg = f"Bewoner {self.naam} verplaatst van {oude_kamer_naam} naar {nieuwe_kamer_naam}"
 
             if logger_instance:
-                logger_instance(log_msg, type_event="beweging")
+                logger_instance.log(log_msg, type_event="BEWEGING")
             else:
                 print(f"DEBUG: {log_msg}")
 
