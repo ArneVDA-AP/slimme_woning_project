@@ -121,7 +121,43 @@ def setup_woning():
 
 
 def simuleer_tijdstap(woning_obj, logger_obj, hub_obj):
-    pass
+    logger_obj.log("nieuwe tijdstap", "SIM")
+
+    if not woning_obj.kanmers:
+        logger_obj.log("Geen kamers dus bewoners knn zich niet verplaatsen.","SIM")
+        return
+    
+    kamers_lijst = list(woning_obj.kamers.values())
+
+    for bewoner in woning_obj.bewoners:
+        oude_kamer = bewoner.huidige_kamer
+        nieuwe_kamers_lijst = [k for k in kamers_lijst if k != oude_kamer] #rechtstreeks aangepast v stack overflow. zie history voor verbetering als nodig
+
+        if not nieuwe_kamers_lijst:
+            if len(kamers_lijst) > 1:
+                logger_obj.log(f"{bewoner.naam} blijft in {oude_kamer.naam if oude_kamer else "geen andere kamer beschikbaar"}", "SIM")
+                nieuwe_kamer = oude_kamer
+            elif len(kamers_lijst) == 1:
+                logger_obj.log(f"{bewoner.naam} blijft in {oude_kamer.naam if oude_kamer else "maar 1 kamer"}", "SIM")
+                nieuwe_kamer = oude_kamer
+        else:
+            nieuwe_kamer= random.choice(nieuwe_kamers_lijst)
+
+        if nieuwe_kamer and (nieuwe_kamer != oude_kamer or not oude_kamer): # or not oude kamer-> als er geen oude kamer was dan...
+            bewoner.verplaats(nieuwe_kamer, logger_instance=logger_obj)
+
+            logger_obj.log(f"{bewoner.naam} is nu in {nieuwe_kamer.naam}", "SIM")
+
+            for apparaat in nieuwe_kamer.get_apparaten():
+                if isinstance(apparaat, Bewegingssensor):
+                    if apparaat.status:
+                        logger_obj.log(f"Bewegingssensor {apparaat.naam} in{nieuwe_kamer.naam} detecteerd een beweging.", "SENSOR")
+                        apparaat.detecteer_beweging()
+                    else:
+                        logger_obj.log(f"Bewegingssensor {apparaat.naam} in{nieuwe_kamer.naam} staat uit","SENSOR")
+        elif nieuwe_kamer == oude_kamer:
+            logger_obj.log(f"{bewoner.naam} blijft in {oude_kamer.naam if oude_kamer else "geen kamer"}", "SIM")
+
 
 
 if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehctstreeks kan uitvoeren
@@ -135,8 +171,22 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
 
     html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
 
+    aantal_tijdstappen = 10
+    seconden_per_stap = 2
+
+    print(f"Start sim met {aantal_tijdstappen} tijdstappen per stap {seconden_per_stap} seconden wachten.")
+
+    for i in range(aantal_tijdstappen):
+        print(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
+
+        # update de html na elke stap, anders moielijk om realtime sim te volgen als traag stappen vergroten
+        if (i + 1) == aantal_tijdstappen:
+            html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
+        time.sleep(seconden_per_stap)
+
+    print("\nEinde sim")
+    print(mijn_woning)
+
     mijn_logger.close()
 
-    print(f"normaal gezien zou de html moeten gegenerate zijn... check {html_gen.output_map} voor index.html")
-
-
+    print(f"HTMLGEN klaar Kijk in {html_gen.output_map} voor index.html")
