@@ -27,6 +27,16 @@ def setup_woning():
 
     logger.log(f"Woning {woning.naam} succesvol aangemaaktt en smarthub {hub.naam} gekoppeld","SETUP")
 
+    #regels
+    regel1 = {
+        "trigger_event": "beweging_gedetecteerd",
+        "kamer_naam_conditie": "Living",
+       "actie_apparaat_naam": "Lamp Living Luster",
+       "actie_methode": "zet_aan"
+    }
+    hub.registreer_regel(regel1)
+    logger.log(f"{len(hub.regels)} regels geregistreerd bij SmartHub.", "SETUP")
+
     # kamers en aan wonign toevoegen
     living = Kamer(naam="Living", logger_instance=logger)
     keuken = Kamer(naam="Keuken", logger_instance=logger)
@@ -46,7 +56,7 @@ def setup_woning():
 
     #apparaten in kamers zetten
     #living
-    lamp_living_luster = Lamp(naam="Lamp Living Luster", logger_instance=logger)
+    lamp_living_luster = Lamp(naam="Lamp Living Luster", logger_instance=logger,helderheid=0)
     living.voeg_apparaat_toe(lamp_living_luster)
 
     thermo_living = Thermostaat(naam="Thermostaat in Living", ingestelde_temp= 21.0, logger_instance=logger)
