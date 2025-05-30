@@ -51,5 +51,5 @@ class Logger:
                 self.file_geopend.close()
                 self.file_geopend = None
             except Exception as e:
-                print(f"Fout bij het sluiten logbestand. fout: {e}")
+                print(f"FOUT bij het sluiten logbestand '{self.log_file_path}'. Fout: {e}")
     

@@ -256,7 +256,7 @@ def toon_laatste_logs(logger_obj, aantal = 7):
     for entry in logs[-aantal:]:
         print(entry)
     
-
+CORRECTE_PINCODE = "1234"
 if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehctstreeks kan uitvoeren
                             #en dus niet als ik het geimporteerd heb.
     mijn_woning, mijn_logger, mijn_hub = setup_woning() # zelfde vorlgorde als de returns
@@ -302,8 +302,13 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
             html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)            
             mijn_logger.log("site updated.")
         elif gebruikers_input == 3:
-            voer_handmatige_actie_uit(mijn_woning, mijn_logger)
-
+            ingevoerde_pin = input("Voer de juiste pincode in om door te gaan: ")
+            if ingevoerde_pin == CORRECTE_PINCODE:
+                mijn_logger.log("Pin correct. Handmatige acties nu beschikbaar", "AUTH_SUCCES")
+                voer_handmatige_actie_uit(mijn_woning, mijn_logger)
+            else:
+                print("FOUT: pincode niet juist. Toegang geweigerd")
+                
         elif gebruikers_input == 4:
             try:
                 aantal = int(input("Hvl recente log entries wilt je zien?"))
