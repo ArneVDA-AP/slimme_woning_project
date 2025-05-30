@@ -12,14 +12,14 @@ class Rookmelder(Apparaat):
 
     def detecteer_rook(self):
         if not self.status:
-            print(f"DEBUG: Rook,elder {self.naam} staat UIT en kan niet dtecteren.")
+            self.logger.log(f"DEBUG: Rook,elder {self.naam} staat UIT en kan niet dtecteren.")
             return
 
         if not self._rook_gedetecteerd:
             self._rook_gedetecteerd = True
             self._alarm_actief = True
 
-            print(f"ALARM! Rook gedetecteerd door {self.naam}! Alarm geactiveerd")
+            self.logger.log(f"ALARM! Rook gedetecteerd door {self.naam}! Alarm geactiveerd")
 
             if self.smarthub:
                 try:
@@ -29,16 +29,16 @@ class Rookmelder(Apparaat):
                         event_type="rook_alarm",
                         data=data
                     )
-                    print(f"DEBUG: Notificatie 'rook alarm' gestuurd naar smarthub door {self.naam}")
+                    self.logger.log(f"DEBUG: Notificatie 'rook alarm' gestuurd naar smarthub door {self.naam}")
                 except Exception as e:
-                    print(f"FOUT: Onverwachte fout van {self.naam} fout: {e}")
+                    self.logger.log(f"FOUT: Onverwachte fout van {self.naam} fout: {e}")
 
     def reset_alarm(self):
         if self._alarm_actief or self._rook_gedetecteerd:
             self._rook_gedetecteerd = False
             self._alarm_actief = False
 
-            print(f"Alarm en rookalarm voor {self.naam} gereset.")
+            self.logger.log(f"Alarm en rookalarm voor {self.naam} gereset.")
 
             #later ook reset notificatie smarthub schrijven
     @property

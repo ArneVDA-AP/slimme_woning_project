@@ -11,14 +11,14 @@ class SmartHub:
         if self.logger:
             self.logger.log(f"Smarthub {self.naam} gestart", "HUB")
         else:
-            print(f"Smarthub {self.naam} gestart maar zonder logger")
+            self.logger.log(f"Smarthub {self.naam} gestart maar zonder logger")
         
     def set_woning(self, woning_obj):
         self.woning = woning_obj
         if self.logger:
             self.logger.log(f"{self.naam} gekoppeld aan woning.", "HUB")
         else:
-            print(f"{self.naam} gekoppeld aan woning. geen logger")
+            self.logger.log(f"{self.naam} gekoppeld aan woning. geen logger")
     
     def ontvang_notificatie(self, apparaat, event_type:str, data: dict = {}):
         apparaat_naam = getattr(apparaat, "naam", "geen apparaatnaam ingesteld")
@@ -29,7 +29,7 @@ class SmartHub:
         if self.logger:
             self.logger.log(log_msg,"HUB")
         else:
-            print(f"{log_msg}")
+            self.logger.log(f"{log_msg}")
 
         self.verwerk_notif(apparaat, event_type, data)
 
@@ -39,7 +39,7 @@ class SmartHub:
         if self.logger:
             self.logger.log(log_msg, "HUB")
         else:
-            print(f"DEBUG: {log_msg}")
+            self.logger.log(f"DEBUG: {log_msg}")
 
         if event_type == "beweging_gedetecteerd":
             kamer_naam_beweging = data.get("kamer_naam")
@@ -53,7 +53,7 @@ class SmartHub:
                             if self.logger:
                                 self.logger.log(f"lamp {appar_in_kamer.naam} in kamer {kamer_naam_beweging} AAN door beweging.", "HUB")
                             else:
-                                print(f"lamp {appar_in_kamer.naam} in kamer {kamer_naam_beweging} AAN door beweging.")
+                                self.logger.log(f"lamp {appar_in_kamer.naam} in kamer {kamer_naam_beweging} AAN door beweging.")
             else:
                 if self.logger:
                     self.logger.log(f"geen kamernaam of woning gevonden","HUB") 
@@ -65,7 +65,7 @@ class SmartHub:
             if self.logger:
                 self.logger.log(msg, "ROOKALARM")
             else:
-                print(f"ALARM! {msg}")
+                self.logger.log(f"ALARM! {msg}")
 
         else:
             if self.logger:

@@ -1,8 +1,11 @@
 class Bewoner:
-    def __init__(self, naam:str):
+    def __init__(self, naam:str, logger_instance=None):
         self.naam: str = naam
         self.huidige_kamer = None
-        # self.logger = None
+        self.logger = logger_instance
+
+        if self.logger:
+            self.logger.log(f"{self.naam}'angemaakt.", "BEWONER_CONF")
 
     def verplaats(self, nieuwe_kamer_obj, logger_instance=None):
         oude_kamer_naam = " "
@@ -14,7 +17,7 @@ class Bewoner:
         nieuwe_kamer_naam = "None"
         if self.huidige_kamer:
             nieuwe_kamer_naam = getattr(self.huidige_kamer, "naam", "Onbekende nieuwe kamer")
-            print(f"DEBUG: verplaats: {self.naam} huidige kamer is nu:"
+            self.logger.log(f"DEBUG: verplaats: {self.naam} huidige kamer is nu:"
                   f"{self.huidige_kamer.naam if self.huidige_kamer.naam else 'None'}")
 
             nieuwe_kamer_naam = self.huidige_kamer.naam
@@ -24,11 +27,11 @@ class Bewoner:
             if logger_instance:
                 logger_instance.log(log_msg, type_event="BEWEGING")
             else:
-                print(f"DEBUG: {log_msg}")
+                self.logger.log(f"DEBUG: {log_msg}")
 
     def __str__(self)-> str:
 
-        print(f"DEBUG: __Str__: {self.naam} huidige kamer is nu:"
+        self.logger.log(f"DEBUG: __Str__: {self.naam} huidige kamer is nu:"
             f"{self.huidige_kamer.naam if self.huidige_kamer.naam else 'None'}")
 
         

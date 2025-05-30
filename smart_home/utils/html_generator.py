@@ -5,16 +5,16 @@ class HTMLGenerator:
         self.output_map:str = output_map
         try:
             os.makedirs(self.output_map, exist_ok=True)
-            print(f"INFO; output map is aangemaakt of bestond al {self.output_map}")
+            self.logger.log(f"INFO; output map is aangemaakt of bestond al {self.output_map}")
         except Exception as e:
-            print(f"FOUT: geen output folder {self.output_map} fout: {e}")
+            self.logger.log(f"FOUT: geen output folder {self.output_map} fout: {e}")
         
     def gen_site(self, woning_obj, logger_obj = None):
         if not woning_obj:
-            print("FOUT woning_obj verplicht!")
+            self.logger.log("FOUT woning_obj verplicht!")
             return
         
-        print(f"START gen site voor woning {woning_obj.naam}")
+        self.logger.log(f"START gen site voor woning {woning_obj.naam}")
 
         self.gen_index_pagina(woning_obj)
 
@@ -26,7 +26,7 @@ class HTMLGenerator:
         
         self._gen_css()
 
-        print(f"INFO sitegen voltooid in map {self.output_map}")
+        self.logger.log(f"INFO sitegen voltooid in map {self.output_map}")
 
     def gen_index_pagina(self, woning_obj):
         bestandnaam = os.path.join(self.output_map, "index.html")
@@ -74,9 +74,9 @@ class HTMLGenerator:
         try:
             with open(bestandnaam, "w", encoding="utf-8") as f:
                 f.write("\n".join(html_content_list))
-            print(f"INFO: index {bestandnaam} gemaakt.")
+            self.logger.log(f"INFO: index {bestandnaam} gemaakt.")
         except Exception as e:
-            print(f"FOUT: kon index {bestandnaam} niet maken. fout: {e}")
+            self.logger.log(f"FOUT: kon index {bestandnaam} niet maken. fout: {e}")
 
     def gen_log_pagina(self, logger_obj):
         bestandsnaam = os.path.join(self.output_map, "logs.html")
@@ -110,9 +110,9 @@ class HTMLGenerator:
         try:
             with open(bestandsnaam, "w", encoding="utf-8") as f:
                 f.write("\n".join(html_content_list))
-            print(f"Pagina voor logs {bestandsnaam} gemaakt")
+            self.logger.log(f"Pagina voor logs {bestandsnaam} gemaakt")
         except Exception as e:
-            print(f"FOUT: kon index {bestandsnaam} niet maken. fout: {e}")
+            self.logger.log(f"FOUT: kon index {bestandsnaam} niet maken. fout: {e}")
 
     def gen_kamer_pagina(self, kamer_obj):
         kamer_page_link = kamer_obj.naam.lower().replace(" ", "_") # zelfde als bij html link, de layout voor links, zonder spaties dus
@@ -156,9 +156,9 @@ class HTMLGenerator:
         try:
             with open(bestandsnaam,"w", encoding="utf-8") as f:
                 f.write("\n".join(html_content_list))
-            print(f"INFO: Kamerpagina'{bestandsnaam}' voor '{kamer_obj.naam} gemaakt'.")
+            self.logger.log(f"INFO: Kamerpagina'{bestandsnaam}' voor '{kamer_obj.naam} gemaakt'.")
         except Exception as e:
-            print(f"FOUT: Kon pagina niet maken. Fout: {e}")
+            self.logger.log(f"FOUT: Kon pagina niet maken. Fout: {e}")
 
 
     def _gen_css(self):
@@ -172,8 +172,8 @@ class HTMLGenerator:
         try:
             with open(bestandnaam, "w", encoding="utf-8") as f:
                 f.write(css_content)
-            print(f"CSS BESTAND {bestandnaam} aangemaakt")
+            self.logger.log(f"CSS BESTAND {bestandnaam} aangemaakt")
         except Exception as e:
-            print(f"FOUT kon css bestand niet aanmaken. fout: {e}")
+            self.logger.log(f"FOUT kon css bestand niet aanmaken. fout: {e}")
 
         

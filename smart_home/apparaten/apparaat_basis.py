@@ -1,11 +1,15 @@
 from abc import ABC, abstractmethod;
 
 class Apparaat(ABC):
-    def __init__(self, naam: str, kamer=None):
+    def __init__(self, naam: str, kamer=None, logger_instance=None):
         self.naam: str = naam
         self._status: bool = False
         self.kamer = kamer
-        # self.logger = None
+        self.logger = logger_instance
+
+        if self.logger:
+            kamer_naam_str = self.kamer.naam if self.kamer else "geen kamer"
+            self.logger.log(f"Apparaat {self.naam} aangemaakt, {type(self).__name__} in {kamer_naam_str}", "APPCONFIG")
 
     def zet_aan(self):
         if not self._status:
@@ -13,21 +17,21 @@ class Apparaat(ABC):
             # TODO Logger implementeren voor alle prints.
             # Denk aan deze comment en doe hem pas weg als ik alle prints
             # heb vervangen.
-            print(f"DEBUG: Apparaat '{self.naam}' AAN gezet.")
+            self.logger.log(f"DEBUG: Apparaat '{self.naam}' AAN gezet.")
         else:
-            print(f"DEBUG: Apparaat '{self.naam}' was al AAN.")
+            self.logger.log(f"DEBUG: Apparaat '{self.naam}' was al AAN.")
 
     def zet_uit(self):
         if self._status:
             self._status = False
-            print(f"DEBUG: Apparaat '{self.naam}' UIT gezet.")
+            self.logger.log(f"DEBUG: Apparaat '{self.naam}' UIT gezet.")
         else:
-            print(f"DEBUG: Apparaat '{self.naam}' was al UIT.")
+            self.logger.log(f"DEBUG: Apparaat '{self.naam}' was al UIT.")
             
     def toggle_status(self):
         self._status = not self._status
         status_tekst = "AAN" if self._status else "UIT"
-        print(f"DEBUG: Apparaat '{self.naam}' status getoggled naar {status_tekst}")
+        self.logger.log(f"DEBUG: Apparaat '{self.naam}' status getoggled naar {status_tekst}")
 
     @property
     def status(self) -> bool:

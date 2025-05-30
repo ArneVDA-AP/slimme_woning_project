@@ -8,7 +8,7 @@ class Gordijn(Apparaat):
         super().__init__(naam, kamer)
 
         if begin_positie not in self.MOGELIJKE_POSITIES:
-            print(f"WAARSCHUWINF: Ongeldige beginpositie {begin_positie} voor {self.naam}"
+            self.logger.log(f"WAARSCHUWINF: Ongeldige beginpositie {begin_positie} voor {self.naam}"
                   "Juiste opties: open, gesloten, half open")
             self._positie:str = "gesloten"
         else:
@@ -19,37 +19,37 @@ class Gordijn(Apparaat):
 
     def open_gordijn(self):
         if not self.status:
-            print(f"DEBUG: gordijn {self.naam} staat UIT ")
+            self.logger.log(f"DEBUG: gordijn {self.naam} staat UIT ")
             return
         if self._positie != "open":
             self._positie = "open"
-            print(f"DEBUG: Gordijn {self.naam} geopend")
+            self.logger.log(f"DEBUG: Gordijn {self.naam} geopend")
         else:
-            print(f"gordijn {self.naam} was al open")
+            self.logger.log(f"gordijn {self.naam} was al open")
     
     def sluit_gordijn(self):
         if not self.status:
-            print(f"DEBUG: gordijn {self.naam} staat UIT ")
+            self.logger.log(f"DEBUG: gordijn {self.naam} staat UIT ")
             return
         if self._positie != "gesloten":
             self._positie = "gesloten"
-            print(f"DEBUG: gordijn {self.naam} gesloten")
+            self.logger.log(f"DEBUG: gordijn {self.naam} gesloten")
         else:
-            print(f"DEBUG: gordijn {self.naam} was al gesloten")
+            self.logger.log(f"DEBUG: gordijn {self.naam} was al gesloten")
     
     def stel_positie_in(self, nieuwe_positie: str):
         if not self.status:
-            print(f"DEBUG: gordijn {self.naam} staat UIT ")
+            self.logger.log(f"DEBUG: gordijn {self.naam} staat UIT ")
             return
         
         if nieuwe_positie in self.MOGELIJKE_POSITIES:
             if self._positie != nieuwe_positie:
                 self._positie = nieuwe_positie
-                print(f"DEBUG: Gordijn {self.naam} ingesteld op {self._positie}")
+                self.logger.log(f"DEBUG: Gordijn {self.naam} ingesteld op {self._positie}")
             else:
-                print(f"DEBUG: gordijn {self.naam} stond al op {self._positie}")
+                self.logger.log(f"DEBUG: gordijn {self.naam} stond al op {self._positie}")
         else:
-            print(f"WAARSCHUWINF: Ongeldige positie {nieuwe_positie} voor {self.naam}"
+            self.logger.log(f"WAARSCHUWINF: Ongeldige positie {nieuwe_positie} voor {self.naam}"
                 f"Juiste opties: {self.MOGELIJKE_POSITIES}")
     @property
     def positie(self)-> str:

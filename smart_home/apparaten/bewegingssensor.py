@@ -11,11 +11,11 @@ class Bewegingssensor (Apparaat):
     
     def detecteer_beweging(self):
         if not self.status:
-            print(f"DEBUG: Bewegingssensor {self.naam} staat UIT dus kan niet detecteren.")
+            self.logger.log(f"DEBUG: Bewegingssensor {self.naam} staat UIT dus kan niet detecteren.")
             return
         if not self._beweging_gedetecteerd:
             self._beweging_gedetecteerd = True
-            print(f"DEBUG: Beweging gedetecteerd door{self.naam}!")
+            self.logger.log(f"DEBUG: Beweging gedetecteerd door{self.naam}!")
 
             if self.smarthub:
                 try:
@@ -24,16 +24,16 @@ class Bewegingssensor (Apparaat):
                         event_type="beweging_gedetecteerd",
                         data={"kamer_naam":self.kamer.naam if self.kamer else "Onbekend, Geen kamer"}
                     )
-                    print(f"DEBUG: Notificatie naat smarthub gestuurd door {self.naam}.")
+                    self.logger.log(f"DEBUG: Notificatie naat smarthub gestuurd door {self.naam}.")
                 except AttributeError as e:
-                    print(f"FOUT: Kon sSmarhub niet notificeren vanuit {self.naam}. Fout: {e}")
+                    self.logger.log(f"FOUT: Kon sSmarhub niet notificeren vanuit {self.naam}. Fout: {e}")
             else:
-                print(f"WAARSCHUWING: Geen smarthun gekoppeld aan {self.naam}, notificatie kan niet gestuurd worden..")
+                self.logger.log(f"WAARSCHUWING: Geen smarthun gekoppeld aan {self.naam}, notificatie kan niet gestuurd worden..")
                 
     def reset_sensor(self):
         if self._beweging_gedetecteerd:
             self._beweging_gedetecteerd = False
-            print(f"DEBUG: Sensor {self.naam} gereset, geen beweging meer.")
+            self.logger.log(f"DEBUG: Sensor {self.naam} gereset, geen beweging meer.")
                 
     @property
     def beweging_gedetecteerd(self)-> bool:

@@ -46,66 +46,66 @@ def setup_woning():
 
     #apparaten in kamers zetten
     #living
-    lamp_living_luster = Lamp(naam="Lamp Living Luster")
+    lamp_living_luster = Lamp(naam="Lamp Living Luster", logger_instance=logger)
     living.voeg_apparaat_toe(lamp_living_luster)
 
-    thermo_living = Thermostaat(naam="Thermostaat in Living", ingestelde_temp= 21.0)
+    thermo_living = Thermostaat(naam="Thermostaat in Living", ingestelde_temp= 21.0, logger_instance=logger)
     living.voeg_apparaat_toe(thermo_living)
 
-    gordijn_living_tuin = Gordijn(naam="Gordijn Living met Zicht op Tuin")
+    gordijn_living_tuin = Gordijn(naam="Gordijn Living met Zicht op Tuin", logger_instance=logger)
     living.voeg_apparaat_toe(gordijn_living_tuin)
 
-    bewegings_sensor_living = Bewegingssensor(naam="Beweginssensor Living", smarthub_ref=hub)
+    bewegings_sensor_living = Bewegingssensor(naam="Beweginssensor Living", smarthub_ref=hub, logger_instance=logger)
     living.voeg_apparaat_toe(bewegings_sensor_living)
 
     #keuken
-    lamp_keuken_ledstrip = Lamp(naam="Lamp Keuken ledstrip", helderheid=95)
+    lamp_keuken_ledstrip = Lamp(naam="Lamp Keuken ledstrip", helderheid=95, logger_instance=logger)
     keuken.voeg_apparaat_toe(lamp_keuken_ledstrip)
 
-    Rookmelder_keuken = Rookmelder(naam="Rookmelder keuken", smarthub_ref=hub)
+    Rookmelder_keuken = Rookmelder(naam="Rookmelder keuken", smarthub_ref=hub, logger_instance=logger)
     keuken.voeg_apparaat_toe(Rookmelder_keuken)
 
     #slaapkamer groot
-    lamp_slk_groot = Lamp(naam="Lamp Slaapkamer groot")
+    lamp_slk_groot = Lamp(naam="Lamp Slaapkamer groot", logger_instance=logger)
     slaapkamer_groot.voeg_apparaat_toe(lamp_slk_groot)
-    lamp_slk_groot_nacht = Lamp (naam="Nachtlamp Slaapkamer Groot")
+    lamp_slk_groot_nacht = Lamp (naam="Nachtlamp Slaapkamer Groot", logger_instance=logger)
     slaapkamer_groot.voeg_apparaat_toe(lamp_slk_groot_nacht)
-    deurslot_slk_groot = Deurslot(naam="Slot Slaapkamer groot")
+    deurslot_slk_groot = Deurslot(naam="Slot Slaapkamer groot", logger_instance=logger)
     slaapkamer_groot.voeg_apparaat_toe(deurslot_slk_groot)
-    gordijn_slk_groot = Gordijn(naam="Gordijn Slaapkamer Groot")
+    gordijn_slk_groot = Gordijn(naam="Gordijn Slaapkamer Groot", logger_instance=logger)
     slaapkamer_groot.voeg_apparaat_toe(gordijn_slk_groot)
-    thermo_slk_groot = Thermostaat(naam="Thermostaat Slaapkamer groot", ingestelde_temp=18.0)
+    thermo_slk_groot = Thermostaat(naam="Thermostaat Slaapkamer groot", ingestelde_temp=18.0, logger_instance=logger)
     slaapkamer_groot.voeg_apparaat_toe(thermo_slk_groot)
 
     #slaapkamer klein
     
-    lamp_slk_klein = Lamp(naam="Lamp Slaapkamer klein")
+    lamp_slk_klein = Lamp(naam="Lamp Slaapkamer klein", logger_instance=logger)
     slaapkamer_klein.voeg_apparaat_toe(lamp_slk_klein)
-    lamp_slk_klein_nacht = Lamp (naam="Nachtlamp Slaapkamer klein")
+    lamp_slk_klein_nacht = Lamp (naam="Nachtlamp Slaapkamer klein", logger_instance=logger)
     slaapkamer_klein.voeg_apparaat_toe(lamp_slk_klein_nacht)
-    deurslot_slk_klein = Deurslot(naam="Slot Slaapkamer klein")
+    deurslot_slk_klein = Deurslot(naam="Slot Slaapkamer klein", logger_instance=logger)
     slaapkamer_klein.voeg_apparaat_toe(deurslot_slk_klein)
-    gordijn_slk_klein = Gordijn(naam="Gordijn Slaapkamer klein")
+    gordijn_slk_klein = Gordijn(naam="Gordijn Slaapkamer klein", logger_instance=logger)
     slaapkamer_klein.voeg_apparaat_toe(gordijn_slk_klein)
-    thermo_slk_klein = Thermostaat(naam="Thermostaat Slaapkamer klein", ingestelde_temp=18.0)
+    thermo_slk_klein = Thermostaat(naam="Thermostaat Slaapkamer klein", ingestelde_temp=18.0, logger_instance=logger)
     slaapkamer_klein.voeg_apparaat_toe(thermo_slk_klein)
 
     #badkamer1e
-    lamp_badkamer1e = Lamp(naam="Lamp Badkamer 1e")
+    lamp_badkamer1e = Lamp(naam="Lamp Badkamer 1e", logger_instance=logger)
     badkamer1e.voeg_apparaat_toe(lamp_badkamer1e)
-    deurslot_badkamer1e = Deurslot(naam="Slot badkamer 1e")
+    deurslot_badkamer1e = Deurslot(naam="Slot badkamer 1e", logger_instance=logger)
     badkamer1e.voeg_apparaat_toe(deurslot_badkamer1e)
 
     #badkamer2e
-    lamp_badkamer1e = Lamp(naam="Lamp Badkamer 2e")
+    lamp_badkamer1e = Lamp(naam="Lamp Badkamer 2e", logger_instance=logger)
     badkamer2e.voeg_apparaat_toe(lamp_badkamer1e)
-    deurslot_badkamer2e = Deurslot(naam="Slot badkamer 2e")
+    deurslot_badkamer2e = Deurslot(naam="Slot badkamer 2e", logger_instance=logger)
     badkamer2e.voeg_apparaat_toe(deurslot_badkamer2e)
 
     #bewoners
 
-    arne = Bewoner(naam="Arne")
-    clara = Bewoner(naam="clara")
+    arne = Bewoner(naam="Arne", logger_instance=logger)
+    clara = Bewoner(naam="Clara", logger_instance=logger)
 
     woning.voeg_bewoner_toe(arne)
     woning.voeg_bewoner_toe(clara)
@@ -115,7 +115,7 @@ def setup_woning():
 
     logger.log("Apparaten en bewoners toegevoegd en bewoners verplaatst met logger attached", "SETUP")
 
-    print("Setup woning voltooid.")
+    mijn_logger.log("Setup woning voltooid.")
 
     return woning, logger, hub
 
@@ -123,7 +123,7 @@ def setup_woning():
 def simuleer_tijdstap(woning_obj, logger_obj, hub_obj):
     logger_obj.log("nieuwe tijdstap", "SIM")
 
-    if not woning_obj.kanmers:
+    if not woning_obj.kamers:
         logger_obj.log("Geen kamers dus bewoners knn zich niet verplaatsen.","SIM")
         return
     
@@ -164,8 +164,8 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
                             #en dus niet als ik het geimporteerd heb.
     mijn_woning, mijn_logger, mijn_hub = setup_woning() # zelfde vorlgorde als de returns
 
-    print("\n Woning realtime")
-    print(mijn_woning)
+    mijn_logger.log("\n Woning realtime")
+    mijn_logger.log(mijn_woning)
 
     html_gen = HTMLGenerator()
 
@@ -174,19 +174,22 @@ if __name__ == "__main__": # zou ervoor moeten zorgen dat ik main.py enkel rehct
     aantal_tijdstappen = 10
     seconden_per_stap = 2
 
-    print(f"Start sim met {aantal_tijdstappen} tijdstappen per stap {seconden_per_stap} seconden wachten.")
+    mijn_logger.log(f"Start sim met {aantal_tijdstappen} tijdstappen per stap {seconden_per_stap} seconden wachten.")
 
     for i in range(aantal_tijdstappen):
-        print(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
+        mijn_logger.log(f"\n tijdstap {i+1}/{aantal_tijdstappen}")
 
+
+        simuleer_tijdstap(mijn_woning, mijn_logger, mijn_hub) 
+        
         # update de html na elke 2 stappen, anders moielijk om realtime sim te volgen als traag stappen vergroten
         if (i+1) % 2 ==0 or (i + 1) == aantal_tijdstappen:
             html_gen.gen_site(woning_obj=mijn_woning, logger_obj=mijn_logger)
         time.sleep(seconden_per_stap)
 
-    print("\nEinde sim")
-    print(mijn_woning)
+    mijn_logger.log("\nEinde sim")
+    mijn_logger.log(mijn_woning)
 
     mijn_logger.close()
 
-    print(f"HTMLGEN klaar Kijk in {html_gen.output_map} voor index.html")
+    mijn_logger.log(f"HTMLGEN klaar Kijk in {html_gen.output_map} voor index.html")

@@ -1,16 +1,17 @@
 class Kamer:
-    def __init__(self, naam:str):
+    def __init__(self, naam:str, logger_instance= None):
         self.naam: str = naam
         self.apparaten = []
+        self.logger = logger_instance
 
     def voeg_apparaat_toe(self, apparaat_obj):
         if apparaat_obj not in self.apparaten:
             self.apparaten.append(apparaat_obj)
 
             apparaat_obj.kamer = self
-            print(f"DEBUG: Apparaat {apparaat_obj.naam} toegevoegd aan kamer {self.naam}.")
+            self.logger.log(f"DEBUG: Apparaat {apparaat_obj.naam} toegevoegd aan kamer {self.naam}.")
         else:
-            print(f"DEBUG: apparaat {apparaat_obj.naam} is al in kamer {self.naam}")
+            self.logger.log(f"DEBUG: apparaat {apparaat_obj.naam} is al in kamer {self.naam}")
 
     def verwijder_apparaat(self, apparaat_obj_of_naam):
         apparaat_gevonden = None
@@ -29,9 +30,9 @@ class Kamer:
             self.apparaten.remove(apparaat_gevonden)
             apparaat_gevonden.kamer = None
 
-            print(f"DEBUG: {apparaat_gevonden.naam} verweijderd uit kamer {self.naam}")
+            self.logger.log(f"DEBUG: {apparaat_gevonden.naam} verweijderd uit kamer {self.naam}")
         else:
-            print(f"Debug: {str(apparaat_obj_of_naam)} niet gevonden in {self.naam}. Kan dus niet verwijderen.")
+            self.logger.log(f"Debug: {str(apparaat_obj_of_naam)} niet gevonden in {self.naam}. Kan dus niet verwijderen.")
         
     def get_apparaten(self) -> list:
         return self.apparaten

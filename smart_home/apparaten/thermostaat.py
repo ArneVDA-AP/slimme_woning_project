@@ -17,14 +17,14 @@ class Thermostaat(Apparaat):
     # vergelijkbaar met valideer_helderheid maar dan voor temp, :.1f voor de float zodat het altijd .x is
     def _valideer_temperatuur(self, temp: float) -> float:
         if not self.MIN_TEMP <= temp <= self.MAX_TEMP:
-            print(f"WAARSCHUWING: Ongeldige temperatuur {temp}C voor {self.naam} "
+            self.logger.log(f"WAARSCHUWING: Ongeldige temperatuur {temp}C voor {self.naam} "
                   f"Wordt beperkt tot {self.MIN_TEMP:.1f} - {self.MAX_TEMP:.1f}")
             return max(self.MIN_TEMP, min(temp,self.MAX_TEMP))
         return temp
 
     def stel_temp_in(self, gradenC: float):
         self._ingestelde_temp = self._valideer_temperatuur(gradenC)
-        print(f"DEBUG: Ingestelde temperatuur van {self.naam} veranderd naar {self._ingestelde_temp:.1f}C")
+        self.logger.log(f"DEBUG: Ingestelde temperatuur van {self.naam} veranderd naar {self._ingestelde_temp:.1f}C")
 
         # gewoon voor de zekerheid aanzetten. Kans is klein dat de thermostaat
         # uit staat maar toch. Als we een temp instellen gaat die dus aan.

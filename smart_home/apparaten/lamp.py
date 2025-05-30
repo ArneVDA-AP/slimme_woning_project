@@ -26,13 +26,13 @@ class Lamp(Apparaat):
 
     def _valideer_helderheid(self, niveau:int) -> int:
             if not 0 <= niveau <= 100:
-                print(f"WAARSCHUWINGL Ongeldige helderheid ({niveau} voor {self.naam} waarde moet 0-100 zijn!)")
+                self.logger.log(f"WAARSCHUWINGL Ongeldige helderheid ({niveau} voor {self.naam} waarde moet 0-100 zijn!)")
                 return max(0, min(niveau, 100))
             return niveau
     
     def pas_helderheid_aan(self, niveau:int):
          self._helderheid = self._valideer_helderheid(niveau)
-         print(f"DEBUG: Helderheid van {self.naam} aangepast naar {self.helderheid}%")
+         self.logger.log(f"DEBUG: Helderheid van {self.naam} aangepast naar {self.helderheid}%")
 
         # Zie redenering hierboven in mijn constructor, eerst daar
         # ook gezet maar na de @property voor helderheid toe te voegen
