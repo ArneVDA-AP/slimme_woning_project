@@ -28,12 +28,12 @@ def setup_woning():
     logger.log(f"Woning {woning.naam} succesvol aangemaaktt en smarthub {hub.naam} gekoppeld","SETUP")
 
     # kamers en aan wonign toevoegen
-    living = Kamer(naam="Living")
-    keuken = Kamer(naam="Keuken")
-    slaapkamer_groot = Kamer(naam="Slaapkamer groot")
-    slaapkamer_klein = Kamer(naam="Slaapkamer klein")
-    badkamer1e = Kamer(naam="Badkamer 1e Verdiep")
-    badkamer2e = Kamer(naam="Badkamer 2e Verdiep")
+    living = Kamer(naam="Living", logger_instance=logger)
+    keuken = Kamer(naam="Keuken", logger_instance=logger)
+    slaapkamer_groot = Kamer(naam="Slaapkamer groot", logger_instance=logger)
+    slaapkamer_klein = Kamer(naam="Slaapkamer klein", logger_instance=logger)
+    badkamer1e = Kamer(naam="Badkamer 1e Verdiep", logger_instance=logger)
+    badkamer2e = Kamer(naam="Badkamer 2e Verdiep", logger_instance=logger)
     bureau = Kamer(naam="Bureau")
 
     woning.voeg_kamer_toe(living)

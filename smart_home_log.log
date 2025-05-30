@@ -24,3 +24,89 @@
 21:47:25 30/05/2025 - APPCONFIG - Apparaat Lamp Living Luster aangemaakt, Lamp in geen kamer
 21:47:25 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Living Luster aangepast naar 100%
 21:47:25 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Living Luster' AAN gezet.
+21:49:19 30/05/2025 - HUB - Smarthub Smarthub 1 gestart
+21:49:19 30/05/2025 - HUB - Smarthub 1 gekoppeld aan woning.
+21:49:19 30/05/2025 - SETUP - Woning Slimme woning succesvol aangemaaktt en smarthub Smarthub 1 gekoppeld
+21:49:19 30/05/2025 - INFO - Debug: kamer Living toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Keuken toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Slaapkamer groot toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Slaapkamer klein toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Badkamer 1e Verdiep toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Badkamer 2e Verdiep toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - Debug: kamer Bureau toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Living Luster aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Living Luster aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Living Luster' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Living Luster toegevoegd aan kamer Living.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Thermostaat in Living aangemaakt, Thermostaat in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Ingestelde temperatuur van Thermostaat in Living veranderd naar 21.0C
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Thermostaat in Living' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Thermostaat in Living toegevoegd aan kamer Living.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Gordijn Living met Zicht op Tuin aangemaakt, Gordijn in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Gordijn Living met Zicht op Tuin' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Gordijn Living met Zicht op Tuin toegevoegd aan kamer Living.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Beweginssensor Living aangemaakt, Bewegingssensor in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Beweginssensor Living' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Beweginssensor Living toegevoegd aan kamer Living.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Keuken ledstrip aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Keuken ledstrip aangepast naar 95%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Keuken ledstrip' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Keuken ledstrip toegevoegd aan kamer Keuken.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Rookmelder keuken aangemaakt, Rookmelder in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Rookmelder keuken' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Rookmelder keuken toegevoegd aan kamer Keuken.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Slaapkamer groot aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Slaapkamer groot aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Slaapkamer groot' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Slaapkamer groot toegevoegd aan kamer Slaapkamer groot.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Nachtlamp Slaapkamer Groot aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Nachtlamp Slaapkamer Groot aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Nachtlamp Slaapkamer Groot' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Nachtlamp Slaapkamer Groot toegevoegd aan kamer Slaapkamer groot.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Slot Slaapkamer groot aangemaakt, Deurslot in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Slot Slaapkamer groot toegevoegd aan kamer Slaapkamer groot.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Gordijn Slaapkamer Groot aangemaakt, Gordijn in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Gordijn Slaapkamer Groot' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Gordijn Slaapkamer Groot toegevoegd aan kamer Slaapkamer groot.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Thermostaat Slaapkamer groot aangemaakt, Thermostaat in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Ingestelde temperatuur van Thermostaat Slaapkamer groot veranderd naar 18.0C
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Thermostaat Slaapkamer groot' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Thermostaat Slaapkamer groot toegevoegd aan kamer Slaapkamer groot.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Slaapkamer klein aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Slaapkamer klein aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Slaapkamer klein' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Slaapkamer klein toegevoegd aan kamer Slaapkamer klein.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Nachtlamp Slaapkamer klein aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Nachtlamp Slaapkamer klein aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Nachtlamp Slaapkamer klein' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Nachtlamp Slaapkamer klein toegevoegd aan kamer Slaapkamer klein.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Slot Slaapkamer klein aangemaakt, Deurslot in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Slot Slaapkamer klein toegevoegd aan kamer Slaapkamer klein.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Gordijn Slaapkamer klein aangemaakt, Gordijn in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Gordijn Slaapkamer klein' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Gordijn Slaapkamer klein toegevoegd aan kamer Slaapkamer klein.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Thermostaat Slaapkamer klein aangemaakt, Thermostaat in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Ingestelde temperatuur van Thermostaat Slaapkamer klein veranderd naar 18.0C
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Thermostaat Slaapkamer klein' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Thermostaat Slaapkamer klein toegevoegd aan kamer Slaapkamer klein.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Badkamer 1e aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Badkamer 1e aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Badkamer 1e' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Badkamer 1e toegevoegd aan kamer Badkamer 1e Verdiep.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Slot badkamer 1e aangemaakt, Deurslot in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Slot badkamer 1e toegevoegd aan kamer Badkamer 1e Verdiep.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Lamp Badkamer 2e aangemaakt, Lamp in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Helderheid van Lamp Badkamer 2e aangepast naar 100%
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat 'Lamp Badkamer 2e' AAN gezet.
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Lamp Badkamer 2e toegevoegd aan kamer Badkamer 2e Verdiep.
+21:49:19 30/05/2025 - APPCONFIG - Apparaat Slot badkamer 2e aangemaakt, Deurslot in geen kamer
+21:49:19 30/05/2025 - INFO - DEBUG: Apparaat Slot badkamer 2e toegevoegd aan kamer Badkamer 2e Verdiep.
+21:49:19 30/05/2025 - BEWONER_CONF - Arne'angemaakt.
+21:49:19 30/05/2025 - BEWONER_CONF - Clara'angemaakt.
+21:49:19 30/05/2025 - INFO - DEBUG: Bewoner Arne toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - DEBUG: Bewoner Clara toegevoegd aan Slimme woning
+21:49:19 30/05/2025 - INFO - DEBUG: verplaats: Arne huidige kamer is nu:Living
+21:49:19 30/05/2025 - BEWEGING - Bewoner Arne verplaatst van   naar Living
+21:49:19 30/05/2025 - INFO - DEBUG: verplaats: Clara huidige kamer is nu:Keuken
+21:49:19 30/05/2025 - BEWEGING - Bewoner Clara verplaatst van   naar Keuken
+21:49:19 30/05/2025 - SETUP - Apparaten en bewoners toegevoegd en bewoners verplaatst met logger attached
